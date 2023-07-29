@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3> Streaming numbers appear here</h3>
+    <button onclick="handleOnClick()">Click me</button>
+    <script>
+        var ws = new WebSocket("ws://localhost:8000/test")
+        ws.onmessage = event =>{
+            var number = document.getElementById("number")
+            number.innerHTML = event.data
+        }
+        handleOnClick = () => {
+            ws.send("Hi WebSocket Server")
+        }
+    </script>
+</body>
+</html>
